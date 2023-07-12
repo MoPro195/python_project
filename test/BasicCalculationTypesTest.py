@@ -64,11 +64,21 @@ class TestBasicCalculationTypes(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.calculator.calculation_checksum("")
 
+    def test_roman_to_decimal_functionality(self):
+        self.assertEqual(self.calculator.roman_to_decimal("XIV"), 14)
 
+    def test_roman_to_decimal_with_empty_string(self):
+        with self.assertRaises(ValueError):
+            self.calculator.roman_to_decimal("")
 
+    def test_roman_to_decimal_with_integer(self):
+        with self.assertRaises(TypeError):
+            self.calculator.roman_to_decimal(10)
+
+    def test_roman_to_decimal_with_german_alphabet(self):
+        with self.assertRaises(KeyError):
+            self.calculator.roman_to_decimal("Gustav")
 
 
 if __name__ == '__main__':
     unittest.main()
-
-

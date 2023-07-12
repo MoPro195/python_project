@@ -1,3 +1,6 @@
+from collections import OrderedDict
+
+
 class BasicCalculationTypes:
     # Calculates the product of the two numbers, divides it by 2,
     # and takes the remainder when divided by 7.
@@ -125,12 +128,26 @@ class BasicCalculationTypes:
 
         return total_sum % 10
 
-    def from_roman_number(self, roman_number):
+    def roman_to_decimal(self, roman_number):
         roman_numerals = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
         if not isinstance(roman_number, str):
             raise TypeError("Input must be a string")
-        if roman_number not in roman_numerals:
-            raise KeyError("The input is not available in the roman ABC")
+        if len(roman_number) < 1:
+            raise ValueError("String must have at least one element")
 
+        decimal_number = 0
 
+        for position, digit in enumerate(roman_number):
+            if digit not in roman_numerals:
+                raise KeyError("The input is not available in the roman ABC")
 
+            if position < len(roman_number) - 1:
+                next_digit = roman_number[position + 1]
+                if roman_numerals[digit] < roman_numerals[next_digit]:
+                    decimal_number -= roman_numerals[digit]
+                else:
+                    decimal_number += roman_numerals[digit]
+            else:
+                decimal_number += roman_numerals[digit]
+
+        return decimal_number
