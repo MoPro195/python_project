@@ -1,3 +1,4 @@
+import math
 from collections import OrderedDict
 
 
@@ -22,7 +23,7 @@ class BasicCalculationTypes:
             raise TypeError("Numbers must be integers")
 
         for index in range(max_exclusive + 1):
-            if index % 2 == 0 or index % 2 == 0:
+            if index % 2 == 0 or index % 7 == 0:
                 count += 1
                 total_sum += index
 
@@ -33,20 +34,49 @@ class BasicCalculationTypes:
     def format_result_as_string(self, count, total_sum):
         return "Count: {}, Sum: {}".format(count, total_sum)
 
+    """
+    Checks if a number is even.
+    Args:
+        number (int): The number to be checked.
+    Returns:
+        bool: True if the number is even, False otherwise.
+    Raises:
+        TypeError: If the input is not an integer.
+    """
+
     def is_even(self, number):
         if not isinstance(number, int):
             raise TypeError("Numbers must be integers")
         return number % 2 == 0
+
+    """
+    Checks if a number is odd.
+    Args:
+        number (int): The number to be checked.
+    Returns:
+        bool: True if the number is odd, False otherwise.
+    Raises:
+        TypeError: If the input is not an integer.
+    """
 
     def is_odd(self, number):
         if not isinstance(number, int):
             raise TypeError("Numbers must be integers")
         return number % 2 != 0
 
+    """
+    Converts a given number into its textual representation.
+    Args:
+        number (int): The number to be converted.
+    Returns:
+        str: The textual representation of the number.
+    Raises:
+        TypeError: If the input is not an integer.
+    """
+
     def number_as_text(self, number):
         if not isinstance(number, int):
             raise TypeError("Numbers must be integers")
-
         digits_text = []
         while number > 0:
             last_digit = number % 10
@@ -77,6 +107,17 @@ class BasicCalculationTypes:
 
         return " ".join(digits_text)
 
+    """
+   Calculates perfect numbers up to a given maximum exclusive value.
+   Args:
+       max_exclusive (int): The maximum exclusive value.
+   Returns:
+       list: List of perfect numbers up to the maximum exclusive value.
+   Raises:
+       TypeError: If the input is not an integer.
+       ValueError: If the input is negative.
+   """
+
     def calculation_perfect_numbers(self, max_exclusive):
         if not isinstance(max_exclusive, int):
             raise TypeError("Numbers must be integers")
@@ -92,6 +133,17 @@ class BasicCalculationTypes:
                 number_list.append(sum)
 
         return number_list
+
+    """
+    Calculates prime numbers up to a given maximum value.
+    Args:
+        max_value (int): The maximum value.
+    Returns:
+        list: List of prime numbers up to the maximum value.
+    Raises:
+        TypeError: If the input is not an integer.
+        ValueError: If the input is less than 2.
+    """
 
     def calc_primes_up_to(self, max_value):
         if not isinstance(max_value, int):
@@ -113,6 +165,20 @@ class BasicCalculationTypes:
 
         return primes
 
+    """
+    Calculates the checksum of a given input string.
+
+    Args:
+        input_string (str): The input string.
+
+    Returns:
+        int: The checksum of the input string.
+
+    Raises:
+        TypeError: If the input is not a string.
+        ValueError: If the input string is empty.
+    """
+
     def calculate_checksum(self, input_string):
         # Check if the input value is a string
         if not isinstance(input_string, str):
@@ -127,6 +193,51 @@ class BasicCalculationTypes:
             total_sum += (position + 1) * int(digit)
 
         return total_sum % 10
+
+    """
+    Calculates all Pythagorean triplets up to a given limit.
+    Returns:
+        list: List of Pythagorean triplets.
+    """
+
+    def combinatorics(self):
+        pythagorean_triplets = []
+        for a in range(1, 100):
+            for b in range(1, a + 1):
+                c_squared = a ** 2 + b ** 2
+                c = int(math.sqrt(c_squared))
+                if c ** 2 == c_squared:
+                    pythagorean_triplets.append(c)
+        return pythagorean_triplets
+
+    """
+   Calculates all Pythagorean quadruples up to a given limit.
+   Returns:
+       set: Set of Pythagorean quadruples.
+   """
+
+    def pythagorean_quadruple(self):
+        pythagorean_quadruple_list_set = set()
+        for a in range(1, 100):
+            for b in range(1, a + 1):
+                product_squared = a ** 2 + b ** 2
+                product = int(math.sqrt(product_squared))
+                if product_squared == product:
+                    pythagorean_quadruple_list_set.add(product)
+
+        return pythagorean_quadruple_list_set
+
+    """
+    Converts a Roman numeral to its decimal equivalent.
+    Args:
+        roman_number (str): The Roman numeral to be converted.
+    Returns:
+        int: The decimal representation of the Roman numeral.
+    Raises:
+        TypeError: If the input is not a string.
+        ValueError: If the input string is empty or contains invalid Roman numerals.
+        KeyError: If the input contains Roman numerals that are not defined.
+    """
 
     def roman_to_decimal(self, roman_number):
         roman_numerals = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
@@ -151,3 +262,20 @@ class BasicCalculationTypes:
                 decimal_number += roman_numerals[digit]
 
         return decimal_number
+
+    """
+    Calculates all Armstrong numbers with three digits.
+    Returns:
+        list: List of Armstrong numbers with three digits.
+    """
+
+    def calc_armstrong_numbers(self):
+        armstrong_numbers = []
+        for x in range(1, 10):
+            for y in range(0, 10):
+                for z in range(0, 10):
+                    armstrong_sum = 100 * x + 10 * y + z
+                    if armstrong_sum == (x ** 3 + y ** 3 + z ** 3):
+                        armstrong_numbers.append(x ** 3 + y ** 3 + z ** 3)
+
+        return armstrong_numbers

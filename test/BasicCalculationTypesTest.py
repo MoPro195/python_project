@@ -79,6 +79,40 @@ class TestBasicCalculationTypes(unittest.TestCase):
         with self.assertRaises(KeyError):
             self.calculator.roman_to_decimal("Gustav")
 
+    def test_result_contains_only_integers(self):
+        result = self.calculator.combinatorics()
+        for c in result:
+            self.assertIsInstance(c, int, "The result should contain only integers.")
+
+    def test_result_satisfies_pythagorean_theorem(self):
+        result = self.calculator.combinatorics()
+        for c in result:
+            a, b = self.find_a_b(c)
+            self.assertEqual(a ** 2 + b ** 2, c ** 2, "The result should satisfy the Pythagorean theorem.")
+
+    def find_a_b(self, c):
+        for a in range(1, 100):
+            for b in range(1, a + 1):
+                if a ** 2 + b ** 2 == c ** 2:
+                    return a, b
+
+    def test_calc_armstrong_numbers_returns_list(self):
+        self.result = self.calculator.calc_armstrong_numbers()
+        self.assertIsInstance(self.result, list, "The result should be a list.")
+
+    def test_calc_armstrong_numbers_contains_only_three_digit_numbers(self):
+        result = self.calculator.calc_armstrong_numbers()
+        for number in result:
+            self.assertTrue(100 <= number <= 999, "All numbers should have three digits.")
+
+    def test_calc_armstrong_numbers_all_numbers_are_armstrong_numbers(self):
+        result = self.calculator.calc_armstrong_numbers()
+        for number in result:
+            x = number // 100
+            y = (number // 10) % 10
+            z = number % 10
+            self.assertEqual(number, x**3 + y**3 + z**3, "The number should be an Armstrong number.")
+
 
 if __name__ == '__main__':
     unittest.main()
