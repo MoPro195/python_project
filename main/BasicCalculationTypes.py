@@ -1,11 +1,11 @@
 import math
-from collections import OrderedDict
 
 
 class BasicCalculationTypes:
     # Calculates the product of the two numbers, divides it by 2,
     # and takes the remainder when divided by 7.
-    def calculator(self, number1, number2):
+    @staticmethod
+    def calculator(number1, number2):
         if not isinstance(number1, int) or not isinstance(number2, int):
             raise TypeError("Both numbers must be integers.")
         return (number1 * number2 // 2) % 7
@@ -16,7 +16,8 @@ class BasicCalculationTypes:
       Returns the result formatted as a string.
       """
 
-    def calc_sum_and_count_all_numbers_div_by_2_or_7(self, max_exclusive):
+    @staticmethod
+    def calc_sum_and_count_all_numbers_div_by_2_or_7(max_exclusive):
         total_sum = 0
         count = 0
         if not isinstance(max_exclusive, int):
@@ -27,11 +28,12 @@ class BasicCalculationTypes:
                 count += 1
                 total_sum += index
 
-        return self.format_result_as_string(count, total_sum)
+        return BasicCalculationTypes.format_result_as_string(count, total_sum)
 
         # Formats the count and sum as a string.
 
-    def format_result_as_string(self, count, total_sum):
+    @staticmethod
+    def format_result_as_string(count, total_sum):
         return "Count: {}, Sum: {}".format(count, total_sum)
 
     """
@@ -44,7 +46,8 @@ class BasicCalculationTypes:
         TypeError: If the input is not an integer.
     """
 
-    def is_even(self, number):
+    @staticmethod
+    def is_even(number):
         if not isinstance(number, int):
             raise TypeError("Numbers must be integers")
         return number % 2 == 0
@@ -59,7 +62,8 @@ class BasicCalculationTypes:
         TypeError: If the input is not an integer.
     """
 
-    def is_odd(self, number):
+    @staticmethod
+    def is_odd(number):
         if not isinstance(number, int):
             raise TypeError("Numbers must be integers")
         return number % 2 != 0
@@ -74,7 +78,8 @@ class BasicCalculationTypes:
         TypeError: If the input is not an integer.
     """
 
-    def number_as_text(self, number):
+    @staticmethod
+    def number_as_text(number):
         if not isinstance(number, int):
             raise TypeError("Numbers must be integers")
         digits_text = []
@@ -118,7 +123,8 @@ class BasicCalculationTypes:
        ValueError: If the input is negative.
    """
 
-    def calculation_perfect_numbers(self, max_exclusive):
+    @staticmethod
+    def calculation_perfect_numbers(max_exclusive):
         if not isinstance(max_exclusive, int):
             raise TypeError("Numbers must be integers")
         if max_exclusive < 0:
@@ -145,7 +151,8 @@ class BasicCalculationTypes:
         ValueError: If the input is less than 2.
     """
 
-    def calc_primes_up_to(self, max_value):
+    @staticmethod
+    def calc_primes_up_to(max_value):
         if not isinstance(max_value, int):
             raise TypeError("Numbers must be integers")
         if max_value < 2:
@@ -179,7 +186,8 @@ class BasicCalculationTypes:
         ValueError: If the input string is empty.
     """
 
-    def calculate_checksum(self, input_string):
+    @staticmethod
+    def calculate_checksum(input_string):
         # Check if the input value is a string
         if not isinstance(input_string, str):
             raise TypeError("Input must be a string")
@@ -200,7 +208,8 @@ class BasicCalculationTypes:
         list: List of Pythagorean triplets.
     """
 
-    def combinatorics(self):
+    @staticmethod
+    def combinatorics():
         pythagorean_triplets = []
         for a in range(1, 100):
             for b in range(1, a + 1):
@@ -216,7 +225,8 @@ class BasicCalculationTypes:
        set: Set of Pythagorean quadruples.
    """
 
-    def pythagorean_quadruple(self):
+    @staticmethod
+    def pythagorean_quadruple():
         pythagorean_quadruple_list_set = set()
         for a in range(1, 100):
             for b in range(1, a + 1):
@@ -239,7 +249,8 @@ class BasicCalculationTypes:
         KeyError: If the input contains Roman numerals that are not defined.
     """
 
-    def roman_to_decimal(self, roman_number):
+    @staticmethod
+    def roman_to_decimal(roman_number):
         roman_numerals = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
         if not isinstance(roman_number, str):
             raise TypeError("Input must be a string")
@@ -269,7 +280,8 @@ class BasicCalculationTypes:
         list: List of Armstrong numbers with three digits.
     """
 
-    def calc_armstrong_numbers(self):
+    @staticmethod
+    def calc_armstrong_numbers():
         armstrong_numbers = []
         for x in range(1, 10):
             for y in range(0, 10):

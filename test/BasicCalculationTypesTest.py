@@ -1,6 +1,6 @@
 import unittest
 
-from main.main import BasicCalculationTypes
+from main.BasicCalculationTypes import BasicCalculationTypes
 
 
 class TestBasicCalculationTypes(unittest.TestCase):
