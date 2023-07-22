@@ -77,3 +77,15 @@ class RecursiveExerciseTest(unittest.TestCase):
 
     def test_to_hex_normally_function(self):
         self.assertEqual(self.test_object.to_hex(15), "F")
+
+    def test_is_power_of_2_normally_function(self):
+        self.assertTrue(self.test_object.is_power_of_2(2))
+
+    def test_to_power_of_normally_function(self):
+        self.assertEqual(self.test_object.power_of(4, 2), 16)
+
+    def test_to_power_of_iterativ_normally_function(self):
+        self.assertEqual(self.test_object.power_of_iterativ(4, 2), 16)
+
+    if __name__ == '__main__':
+        unittest.main()

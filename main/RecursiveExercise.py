@@ -303,3 +303,58 @@ class RecursiveExercise:
         if quotient == 0:
             return hex_digits[remainder]
         return RecursiveExercise.to_hex(quotient) + hex_digits[remainder]
+
+    """
+        Checks if the given positive integer is a power of 2.
+
+        :param n: A positive integer to be checked.
+        :return: True if n is a power of 2, False otherwise.
+        :raises ValueError: If n is not a positive number.
+        """
+
+    @staticmethod
+    def is_power_of_2(n: int) -> bool:
+        if n < 0:
+            raise ValueError("n must be an positive number")
+        if n == 1:
+            return True
+        return n % 2 == 0 and RecursiveExercise.is_power_of_2(n // 2)
+
+    """
+        Checks if the given positive integer is a power of 2.
+        :param n: A positive integer to be checked.
+        :return: True if n is a power of 2, False otherwise.
+        :raises ValueError: If n is not a positive number.
+"""
+
+    @staticmethod
+    def power_of(value: int, exponent: int) -> int:
+        if value < 0 and exponent < 0:
+            raise ValueError("value and exponent must be positive")
+        if exponent == 0:
+            return 1
+        if exponent == 1:
+            return value
+        return value * RecursiveExercise.power_of(value, exponent - 1)
+
+
+
+    """
+    Calculates the power of a given positive integer 'value' to the given positive integer 'exponent' using an iterative approach.
+
+    :param value: A positive integer to be raised to the power of 'exponent'.
+    :param exponent: A positive integer representing the power to which 'value' is raised.
+    :return: The result of 'value' raised to the power of 'exponent'.
+    :raises ValueError: If 'value' or 'exponent' is negative.
+    """
+
+    @staticmethod
+    def power_of_iterativ(value: int, exponent: int) -> int:
+        if value < 0 or exponent < 0:
+            raise ValueError("value and exponent must be non-negative")
+        if exponent == 0:
+            return 1
+        result = 1
+        for _ in range(exponent):
+            result *= value
+        return result
